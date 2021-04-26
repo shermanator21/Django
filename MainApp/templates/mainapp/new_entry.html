@@ -2,22 +2,17 @@
 
 {% block content %}
 
-<p><a href="{% url learning_logs:topics' topic.id %}"> {{ topic }} </a> </p>
+<p><a href="{% url 'MainApp:topic' topic.id %}"> {{ topic }} </a> </p>
 
 <p> Add a new entry: </p>
 
-<form action="{% url 'MainApp:new_entry' %}" method='post'>
-
+<form action="{% url 'MainApp:new_entry' topic.id %}" method='post'>
     {% csrf_token %}
-
     {{ form.as_p }}
 
     <button name="submit"> Add entry</button>
 </form>
 
 
-<p>
-    <a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
-</p>
 
 {% endblock content %}

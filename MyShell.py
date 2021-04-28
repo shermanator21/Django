@@ -2,6 +2,8 @@
 from MainApp.models import Topic, Entry
 import django
 import os
+from django.contrib.auth.models import User
+
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "learning_log.settings")
 
@@ -25,3 +27,6 @@ for t in topics:
 for e in entries:
     print(f"Topic: {e.topic}")
     print(f"Entry: {e.text}")
+
+for user in User.objects.all():
+    print(user.username, user.id)
